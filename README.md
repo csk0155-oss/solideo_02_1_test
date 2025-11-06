@@ -46,15 +46,14 @@
 - Flask (웹 서버)
 - Flask-SocketIO (실시간 통신)
 - psutil (시스템 정보 수집)
-- GPUtil (GPU 정보)
 - ReportLab (PDF 생성)
 - Matplotlib (차트 생성)
 
 ### Frontend
-- React 18
+- 순수 HTML5, CSS3, JavaScript (ES6+)
 - Chart.js (실시간 차트)
 - Socket.IO Client (WebSocket 통신)
-- Axios (HTTP 요청)
+- 의존성 없음 - CDN 사용
 
 ## 설치 및 실행
 
@@ -81,21 +80,24 @@ Backend 서버는 `http://localhost:5000`에서 실행됩니다.
 새 터미널에서:
 
 ```bash
+# 프론트엔드 디렉토리로 이동
 cd frontend
 
-# 의존성 설치
-npm install
+# Python의 간단한 HTTP 서버로 실행
+python3 -m http.server 8000
 
-# 개발 서버 실행
-npm start
+# 또는 start_frontend.sh 실행
+./start_frontend.sh
 ```
 
-Frontend 애플리케이션은 `http://localhost:3000`에서 실행됩니다.
+Frontend 애플리케이션은 `http://localhost:8000`에서 실행됩니다.
+
+**참고**: 의존성 설치가 필요 없습니다. 모든 라이브러리는 CDN에서 로드됩니다.
 
 ## 사용 방법
 
 1. Backend와 Frontend 서버를 모두 실행합니다
-2. 브라우저에서 `http://localhost:3000`을 엽니다
+2. 브라우저에서 `http://localhost:8000`을 엽니다
 3. "Start Monitoring" 버튼을 클릭하여 모니터링을 시작합니다
 4. 실시간 차트와 통계를 확인합니다
 5. 5분 동안 데이터가 자동으로 수집됩니다 (또는 수동으로 중지 가능)
@@ -137,14 +139,14 @@ Frontend 애플리케이션은 `http://localhost:3000`에서 실행됩니다.
 ## 시스템 요구사항
 
 - Python 3.7+
-- Node.js 14+
 - 모던 웹브라우저 (Chrome, Firefox, Safari, Edge)
+- 인터넷 연결 (CDN에서 라이브러리 로드용)
 
 ## 주의사항
 
 - 일부 시스템에서는 온도 정보를 읽을 수 없을 수 있습니다 (권한 필요)
-- GPU 정보는 NVIDIA GPU가 있을 때만 사용 가능합니다
 - Linux에서는 일부 센서 정보에 root 권한이 필요할 수 있습니다
+- 프론트엔드는 CDN을 사용하므로 인터넷 연결이 필요합니다 (오프라인에서는 라이브러리를 로컬로 다운로드 필요)
 
 ## 라이선스
 
