@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Monitor - 직접 열기</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2rem;
+        }
+        .big-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            transition: all 0.3s;
+        }
+        .big-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        .info-box {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .info-box h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .url {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            color: #667eea;
+            text-align: center;
+            margin: 10px 0;
+            border: 2px solid #667eea;
+        }
+        .method {
+            background: #e8f4f8;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        .method h4 {
+            color: #1976d2;
+            margin-bottom: 8px;
+        }
+        .status {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #4caf50;
+            color: white;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        code {
+            background: #f5f5f5;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🖥️ System Resource Monitor</h1>
+        <div style="text-align: center; color: #4caf50; font-size: 1.2rem; margin-bottom: 20px;">
+            ✅ 서버 실행 중
+        </div>
+
+        <a href="http://localhost:8000" target="_blank" class="big-button">
+            🚀 모니터링 시작하기
+        </a>
+
+        <div class="info-box">
+            <h3>📍 접속 URL</h3>
+            <div class="url">http://localhost:8000</div>
+        </div>
+
+        <div class="method">
+            <h4>방법 1: 위 버튼 클릭</h4>
+            <p>파란색 "모니터링 시작하기" 버튼을 클릭하세요.</p>
+        </div>
+
+        <div class="method">
+            <h4>방법 2: 브라우저에 직접 입력</h4>
+            <p>새 브라우저 창을 열고 주소창에 다음을 입력:</p>
+            <div class="url" style="font-size: 1rem;">http://localhost:8000</div>
+        </div>
+
+        <div class="method">
+            <h4>방법 3: 파일 직접 열기</h4>
+            <p>다음 파일을 브라우저로 드래그:</p>
+            <code>/home/user/solideo_02_1_test/frontend/index.html</code>
+            <p style="margin-top: 10px; color: #f57c00;">⚠️ 이 방법은 WebSocket이 작동하지 않을 수 있습니다.</p>
+        </div>
+
+        <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 20px 0; border-radius: 5px;">
+            <h4 style="margin-bottom: 10px;">🔍 문제 해결</h4>
+            <ul style="margin-left: 20px; line-height: 1.8;">
+                <li>Docker/원격 서버를 사용하는 경우 포트 포워딩이 필요합니다</li>
+                <li><strong>로컬 컴퓨터:</strong> <code>http://localhost:8000</code></li>
+                <li><strong>원격 서버:</strong> <code>http://서버IP:8000</code></li>
+            </ul>
+        </div>
+
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #eee;">
+            <h3 style="margin-bottom: 15px;">📂 프로젝트 위치</h3>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; font-family: monospace; word-break: break-all;">
+                /home/user/solideo_02_1_test
+            </div>
+
+            <h3 style="margin: 20px 0 15px 0;">🎯 사용 방법</h3>
+            <ol style="margin-left: 20px; line-height: 2;">
+                <li>위의 URL로 접속</li>
+                <li>"Start Monitoring" 버튼 클릭</li>
+                <li>10초마다 실시간 업데이트 확인</li>
+                <li>5분 후 PDF 다운로드 가능</li>
+            </ol>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px; padding: 20px; background: #e3f2fd; border-radius: 10px;">
+            <p style="font-size: 1.1rem; color: #1976d2; font-weight: bold;">
+                💡 이 페이지는 북마크해두세요!
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 자동으로 서버 상태 체크
+        setTimeout(function() {
+            fetch('http://localhost:8000/')
+                .then(response => {
+                    if (response.ok) {
+                        console.log('✅ 프론트엔드 서버 접속 가능');
+                    }
+                })
+                .catch(error => {
+                    console.error('❌ 서버 접속 불가:', error);
+                    alert('서버에 접속할 수 없습니다.\n\n다음을 확인하세요:\n1. 서버가 실행 중인지\n2. 포트 8000이 열려있는지\n3. Docker를 사용하는 경우 포트 포워딩 설정');
+                });
+        }, 1000);
+    </script>
+</body>
+</html>

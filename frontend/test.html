@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>서버 테스트</title>
+</head>
+<body style="font-family: Arial; padding: 20px; background: #f0f0f0;">
+    <h1>✅ 서버가 작동합니다!</h1>
+    <p>이 페이지가 보인다면 프론트엔드 서버가 정상 작동 중입니다.</p>
+    <p><strong>시간:</strong> <span id="time"></span></p>
+    <script>
+        document.getElementById('time').textContent = new Date().toLocaleString('ko-KR');
+        alert('✅ 성공! 서버가 작동합니다!');
+    </script>
+</body>
+</html>
