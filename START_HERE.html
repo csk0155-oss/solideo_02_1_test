@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Monitor - 시작 가이드</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .status {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .status h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        .link-box {
+            background: #667eea;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .link-box a {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .link-box a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+        .instructions {
+            margin: 20px 0;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .btn:hover {
+            background: #5568d3;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        .center {
+            text-align: center;
+        }
+    </style>
+    <script>
+        // 자동으로 서버 연결 확인
+        window.onload = function() {
+            checkServers();
+        };
+
+        function checkServers() {
+            fetch('http://localhost:5000/api/health')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'healthy') {
+                        document.getElementById('backend-status').innerHTML = '✅ 백엔드 서버: 정상';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('backend-status').innerHTML = '❌ 백엔드 서버: 오프라인';
+                });
+
+            fetch('http://localhost:8000/')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('frontend-status').innerHTML = '✅ 프론트엔드 서버: 정상';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('frontend-status').innerHTML = '❌ 프론트엔드 서버: 오프라인';
+                });
+        }
+
+        function openMonitor() {
+            window.open('http://localhost:8000', '_blank');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>🖥️ System Resource Monitor</h1>
+
+        <div class="status">
+            <h3>서버 상태</h3>
+            <p id="backend-status">확인 중...</p>
+            <p id="frontend-status">확인 중...</p>
+        </div>
+
+        <div class="link-box">
+            <p style="margin-bottom: 10px;">모니터링 시작하기</p>
+            <a href="http://localhost:8000" target="_blank">
+                http://localhost:8000
+            </a>
+        </div>
+
+        <div class="instructions">
+            <h3>사용 방법</h3>
+            <ol>
+                <li>위의 링크를 클릭하거나 브라우저에 직접 입력하세요</li>
+                <li>"Start Monitoring" 버튼을 클릭하세요</li>
+                <li>실시간으로 시스템 리소스를 확인하세요</li>
+                <li>10초마다 자동으로 데이터가 업데이트됩니다</li>
+                <li>5분 후 자동으로 중지되며, PDF로 다운로드할 수 있습니다</li>
+            </ol>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ 주의사항:</strong>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>인터넷 연결이 필요합니다 (CDN 라이브러리 로드용)</li>
+                <li>서버가 실행 중이어야 합니다</li>
+            </ul>
+        </div>
+
+        <div class="center" style="margin-top: 30px;">
+            <button class="btn" onclick="openMonitor()">
+                🚀 모니터링 시작
+            </button>
+        </div>
+
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 14px;">
+            <p><strong>서버 종료:</strong></p>
+            <code style="background: #f5f5f5; padding: 5px 10px; border-radius: 3px; display: inline-block; margin-top: 5px;">
+                ./stop_servers.sh
+            </code>
+        </div>
+    </div>
+</body>
+</html>
