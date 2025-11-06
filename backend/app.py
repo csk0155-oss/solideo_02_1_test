@@ -132,7 +132,7 @@ def index():
         'service': 'System Resource Monitor API',
         'version': '1.0.0',
         'endpoints': {
-            'websocket': 'ws://localhost:5000',
+            'websocket': 'ws://localhost:5001',
             'health': '/api/health',
             'status': '/api/status',
             'generate_pdf': '/api/generate_pdf (POST)'
@@ -142,5 +142,5 @@ def index():
 
 if __name__ == '__main__':
     print("Starting System Monitor Server...")
-    print("Server running on http://localhost:5000")
-    socketio.run(app, host='0.0.0.0', port=5000, debug=True, allow_unsafe_werkzeug=True)
+    print("Server running on http://localhost:5001")
+    socketio.run(app, host='0.0.0.0', port=5001, debug=True, allow_unsafe_werkzeug=True)

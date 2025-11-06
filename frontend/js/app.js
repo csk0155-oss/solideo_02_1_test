@@ -1,5 +1,5 @@
 // Global variables
-const BACKEND_URL = 'http://localhost:5000';
+const BACKEND_URL = 'http://localhost:5001';
 let socket = null;
 let systemData = null;
 let dataHistory = [];
